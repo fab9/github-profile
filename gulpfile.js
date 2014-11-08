@@ -9,6 +9,17 @@ gulp.task('html', function() {
     .pipe(reload());
 });
 
+gulp.task('css', function() {
+  return gulp.src('*.css')
+    .pipe(gulp.dest('dist'))
+    .pipe(reload());
+});
+
+gulp.task('js', function() {
+  return gulp.src('scripts.js')
+    .pipe(gulp.dest('dist'))
+    .pipe(reload());
+});
 
 gulp.task('server', function() {
   return gulp.src('dist')
@@ -17,6 +28,8 @@ gulp.task('server', function() {
 
 gulp.task('watch', function() {
   gulp.watch('*.html', ['html']);
+  gulp.watch('*.css', ['css']);
+  gulp.watch('scripts.js', ['js']);
 });
 
 // helper function called “reload” that will either return a stream to trigger LiveReload (if LiveReload is available) or simply return a noop stream
@@ -27,4 +40,4 @@ function reload() {
     return gutil.noop();
 }
 
-gulp.task('default', ['server', 'watch', 'html']);
+gulp.task('default', ['server', 'watch', 'html', 'css', 'js']);
