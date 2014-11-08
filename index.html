@@ -47,10 +47,12 @@
       </div><!-- /.container -->
     </nav>
 
+
     <!-- sidebar -->
     <div class="container">
     <div class="row">
-      <div class="col-md-3 col-sm-3 purple">
+      <div class="col-md-3 col-sm-3 purple user">
+        <div id="usertpl"></div>
         <img alt="Fabi's avatar" class="avatar thumbnail" src="https://avatars3.githubusercontent.com/u/632721?v=2&amp;s=460" width="230">
         <h2>Fabi Castillo</h2>
         <p>fab9</p>
@@ -246,8 +248,28 @@
       Status API Training Shop Blog About
 
 
-
+    <script id="usertpl" type="text/template">
+      {{#users}}
+      <div class="user">
+        <h1>Name is: {{name}}</h1>
+        <p>{{location}}</p>
+      </div>
+      {{/users}}
+    </script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+
+    <script>
+    $(function(){
+      $.getJSON('data.json', function(data) {
+        var template = $('#usertpl').html();
+        var html = Mustache.to_html(template, data);
+        $('.user').html(html);
+      }); //getJSON
+    }); //function
+    </script>
+
   </body>
   </html>
