@@ -51,7 +51,8 @@
     <!-- sidebar -->
     <div class="container">
     <div class="row">
-      <div class="col-md-3 col-sm-3 purple user">
+      <div class="col-md-3 col-sm-3 purple">
+        <div id="user"></div>
         <img alt="Fabi's avatar" class="avatar thumbnail" src="https://avatars3.githubusercontent.com/u/632721?v=2&amp;s=460" width="230">
         <h2>Fabi Castidadfllo</h2>
         <p>fab9</p>
@@ -249,7 +250,7 @@
 
     <script id="usertpl" type="text/template">
       {{#users}}
-      <div class="user">
+      <div id="user">
         <h1>Name is: {{name}}</h1>
         <p>{{location}}</p>
       </div>
@@ -265,7 +266,7 @@
       $.getJSON('data.json', function(data) {
         var template = $('#usertpl').html();
         var html = Mustache.to_html(template, data);
-        $('.user').html(html);
+        $('#user').html(html);
       }); //getJSON
     }); //function
     </script>
