@@ -9,9 +9,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/2.1.2/octicons.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="styles-mine.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+
+  <script src="scripts.js"></script>
+
 </head>
 <body>
     <div class="container beige">
+      <!--=========== TEST ==========-->
+      <div id="links">
+      </div>
+      <!--=========== END TEST ==========-->
     <!-- nav -->
       <nav class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
@@ -52,9 +62,8 @@
     <div class="container">
     <div class="row">
       <div class="col-md-3 col-sm-3 purple">
-        <div id="user"></div>
         <img alt="Fabi's avatar" class="avatar thumbnail" src="https://avatars3.githubusercontent.com/u/632721?v=2&amp;s=460" width="230">
-        <h2>Fabi Castidadfllo</h2>
+        <h2>Fabi Castillo</h2>
         <p>fab9</p>
 
         <ul class="list-unstyled">
@@ -247,29 +256,29 @@
       © 2014 GitHub, Inc. Terms Privacy Security Contact
       Status API Training Shop Blog About
 
-
-    <script id="usertpl" type="text/template">
-      {{#users}}
-      <div id="user">
+<!--
+    <script id="speakerstpl" type="text/template">
+      {{#speakers}}
+      <div class="speaker">
         <h1>Name is: {{name}}</h1>
         <p>{{location}}</p>
       </div>
-      {{/users}}
+      {{/speakers}}
     </script>
+-->
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
 
-    <script>
+<!--
+    <script type="text/javascript">
     $(function(){
       $.getJSON('data.json', function(data) {
-        var template = $('#usertpl').html();
+        var template = $('#speakerstpl').html();
         var html = Mustache.to_html(template, data);
-        $('#user').html(html);
+        $('#carousel').html(html);
       }); //getJSON
     }); //function
     </script>
+-->
 
   </body>
   </html>
