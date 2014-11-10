@@ -1,272 +1,202 @@
-<!DOCTYPE>
+<!doctype>
 <html>
-<head>
-  <title>fab9 (Fabi Castillo)</title>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/2.1.2/octicons.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="styles-mine.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
-  <script src="scripts.js"></script>
-  <!-- local temp -->
-  <script src="http://localhost:8000/jquery.js"></script>
-  <script src="http://localhost:8000/node_modules/mustache/mustache.js"></script>
-  <link rel="stylesheet" href="octicons.css">
-</head>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/octicons/2.1.2/octicons.min.css">
+    <style>
+body > .container {
+  min-width: 1020px;
+}
 
-<body>
-  <div id="user-info-tpl">
-    <div class="container beige">
-      <!-- nav -->
-      <nav class="navbar navbar-default" role="navigation">
-        <div class="navbar-header">
-          <a class="header-logo-invertocat navbar-brand" href="https://github.com/">
-            <span class="mega-octicon octicon-mark-github"></span>
-          </a>
-        </div>
-        <div class="site-search">
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group site-search">
-              <input type="text" class="form-control input-sm" placeholder="Search GitHub">
-            </div><!-- .form-group -->
-          </form>
-        </div><!-- .site-search -->
-        <ul class="nav navbar-nav">
-          <li><a href="#">Explore</a></li>
-          <li><a href="#">Gist</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Help</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">{{login}}</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="octicon octicon-plus"></span><span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Action</a></li>
-            </ul>
-          </li>
-          <li><a href="#"><span class="octicon octicon-inbox"></span></a></li>
-          <li><a href="#"><span class="octicon octicon-gear"></span></a></li>
-          <li><a href="#"><span class="octicon octicon-sign-out"></span></a></li>
-        </ul>
-      </div><!-- /.container -->
-    </nav>
+.navbar-brand {
+  font-size: 4ex;
+}
 
+.stats big {
+  font-size: 200%;
+}
 
-    <!-- sidebar -->
+.bio li {
+  line-height: 2;
+}
+.bio .octicon:before {
+  display: inline-block;
+  color: gray;
+  width: 2em;
+  text-align: center;
+}
+
+    </style>
+  </head>
+  <body>
     <div class="container">
+      <nav class="row navbar navbar-default">
+        <div class="container">
+          <a class="navbar-brand octicon octicon-logo-github" href="#">
+            <span hidden>home</span></a>
+        </div>
+      </nav>
       <div class="row">
-        <div class="col-md-3 col-sm-3 purple">
+        <aside class="sidebar col-xs-4 col-sm-4 col-md-4">
+          <a href="#" class="thumbnail" id="avatar"><img></a>
+          <h1> <span>{{name}}</span> <br>
+            <small>{{login}}</small></h1>
 
-          <img alt="Fabi's avatar" class="avatar thumbnail" src="{{avatar_url}}" width="230">
-          <h2>{{name}}</h2>
-          <p>{{login}}</p>
+          <hr>
 
-          <ul class="list-unstyled">
-            <li class="octicon octicon-location"> {{location}} </li>
-            <li class="octicon octicon-mail">{{email}}</li>
-            <li class="octicon octicon-clock">Joined on {{created_at}}</li>
+          <ul class="bio list-unstyled">
+            <li> <i class="octicon octicon-organization"></i> {{company}}
+            <li> <i class="octicon octicon-location"></i> {{location}}
+            <li> <i class="octicon octicon-mail"></i> {{email}}
+            <li> <i class="octicon octicon-link"></i> {{blog}}
+            <li> <i class="octicon octicon-clock"></i> {{created_at}}... kinda
           </ul>
 
-          <ul class="list-unstyled">
-            <li><span>{{followers}}</span>Followers</li>
-            <li><span>57</span>Starred</li>
-            <li><span>{{following}}</span>Following</li>
+          <hr>
+
+          <nav class="stats text-center">
+            <a href="#" class="col-xs-4"><big>{{followers}}</big> Followers</a>
+            <a href="#" class="col-xs-4"><big>{{starred.length???}}</big> Starred</a>
+            <a href="#" class="col-xs-4"><big>{{following}}</big> Following</a>
           </ul>
+        </aside>
+        <section class="main col-xs-8 col-sm-8 col-md-8">
+          <ul class="nav nav-tabs">
+            <li class="active"> <a href="#" class="octicon octicon-diff-added "> Contributions </a>
+            <li> <a href="#"> Repositories </a>
+            <li> <a href="#"> Public activity </a>
+          </ul>
+          <br>
+          <section class="col-xs-12 col-sm-12 col-md-12" id="tab-contributions">
+            <div class="panel panel-default" id="popular-repos">
+              <header class="panel-heading">
+                <h3 class="panel-title"> Popular Repositories </h3>
+              </header>
 
+              <nav class="list-group">
+                <a href="#" class="list-group-item">
+                  <span class="badge octicon octicon-star">123</span>
+                  <h4 class="list-group-item-heading octicon octicon-repo">
+                    Repository Name</h4>
+                  <p>This is the description of the repository.</p>
+                </a>
+                <a href="#" class="list-group-item">
+                  <span class="badge octicon octicon-star">123</span>
+                  <h4 class="list-group-item-heading octicon octicon-repo">
+                    Repository Name</h4>
+                  <p>This is the description of the repository.</p>
+                </a>
+                <a href="#" class="list-group-item">
+                  <span class="badge octicon octicon-star">123</span>
+                  <h4 class="list-group-item-heading octicon octicon-repo">
+                    Repository Name</h4>
+                  <p>This is the description of the repository.</p>
+                </a>
+              </nav>
+            </div> <!-- #popular-repos -->
+            <div class="panel panel-default" id="public-contribs">
+              <header class="panel-heading">
+                <h4 class="panel-title"> Public contributions </h4>
+              </header>
 
-          <h3>Organizations</h3>
-          <img src="https://avatars3.githubusercontent.com/u/6183?v=2&s=84">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <p> Contribution Graph ZOMG! </p>
+                </li>
 
-          <img src="https://avatars3.githubusercontent.com/u/1266578?v=2&s=84">
+                <li class="list-group-item col-xs-4">
+                  <h6 class="list-group-item-heading"> Year of Contributions </h6>
+                </li>
+                <li class="list-group-item col-xs-4">
+                  <h6 class="list-group-item-heading"> Longest Streak </h6>
+                </li>
+                <li class="list-group-item col-xs-4">
+                  <h6 class="list-group-item-heading"> Current Streak </h6>
+                </li>
+                <li class="clearfix">
+              </ul>
+            </div> <!-- #public-contribs -->
+            <div>
+              <h4> Contribution activity </h4>
 
-          <img src="https://avatars1.githubusercontent.com/u/3080009?v=2&s=84">
-
-          <img src="https://avatars1.githubusercontent.com/u/3080402?v=2&s=84">
-
-          <img src="https://avatars0.githubusercontent.com/u/3086128?v=2&s=84">
-
-          <img src="https://avatars3.githubusercontent.com/u/3086150?v=2&s=84">
-
-          <img src="https://avatars3.githubusercontent.com/u/3086272?v=2&s=84">
-
-          <img src="https://avatars3.githubusercontent.com/u/6732188?v=2&s=84">
-
-          <img src="https://avatars0.githubusercontent.com/u/6732193?v=2&s=84">
-
-          <img src="https://avatars3.githubusercontent.com/u/8798300?v=2&s=84">
-        </div><!-- .col-md-2 -->
-        <!-- END sidebar -->
-
-        <!-- main content -->
-        <div class="col-md-8 col-sm-8">
-          <ul>
-            <li>Contributions</li>
-            <li>Repositories</li>
-            <li>Public activity</li>
-            <li><button type="button" class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-pencil"></span>Edit profile</span></li>
-            </ul>
-
-            <div class="container pink">
-              <div class="col-md-4 col-sm-4">
-                <ul class="list-group">
-                  <li class="list-group-item">Popular Repositories</li>
-                  <li class="list-group-item">devbootcat</li>
-                  <li class="list-group-item">Tumblr clone</li>
-                  <li class="list-group-item">alfred-workflows</li>
-                  <li class="list-group-item">A collection of Alfred 2 workflows that wil...</li>
-                  <li class="list-group-item">dotfiles</li>
-                  <li class="list-group-item">fab9-blog</li>
-                  <li class="list-group-item">fab9.github.io</li>
-                  <li class="list-group-item">Jekyll source for my personal blog.</li>
-                </ul>
-              </div> <!-- .col-md-6 -->
-
-              <div class="col-md-6 col-sm-6">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Repositories contributed to</h3>
-                  </div>
-                  <div class="panel-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas. </p>
-                  </div>
-                </div>
-              </div> <!-- .col-md-6 -->
-            </div><!-- .container -->
-
-
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Contributions</h3>
-              </div>
-              <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas. </p>
+              <div class="well">
+                <h5 class="big"> octocat has no activity during this period </h5>
               </div>
             </div>
+          </section> <!-- #tab-contributions -->
+          <section hidden class="col-xs-12 col-sm-12 col-md-12" id="tab-repositories">
+            <ul class="list-group" id="repo-list">
+              <li class="list-group-item">
+                <h3 class="list-group-item-heading">Repository Name</h3>
+                <p> This is the repository description. </p>
+                <p class="muted">Updated on Month DD</p>
+              </li>
+            </ul> <!-- #repo-list -->
+          </section> <!-- #tab-repositories -->
+          <section hidden class="col-xs-12 col-sm-12 col-md-12" id="tab-activity">
+            <ul class="list-unstyled">
+              <li> <span class="muted">on Sep 3</span>
+                <h5> <a href="#">octocat</a> pushed to
+                  <a href="#">change-the-title</a> at
+                  <a href="#">octocat/Spoon-Knife</a>
+                </h5>
+              </li>
+            </ul>
+          </section> <!-- #tab-activity -->
+        </section>
+      </div> <!-- .row -->
+    </div>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script>
 
-            <h2 class="pull-left">Contribution activity</h2>
-            <button type="button" class="btn btn-default btn-sm pull-right">Period: 1 week<span class="caret"></button>
+;(function(){ // closure
+  jQuery.ajax('octocat.json', {
+    success: function(data){
+      console.log(data);
 
-            <!-- Commits -->
-            <h3 class="conversation-list-heading">
-              <div class="inner">
-                <span class="octicon octicon-git-commit"></span>
-                <span class="text-emphasized">67</span> commits
-              </div>
-            </h3>
+      jQuery('#avatar')
+        .attr('href', data.avatar_url)
+        .children('img')
+          .attr('src', data.avatar_url)
+      ; // END #avatar
 
-            Pushed 2 commits to fab9/github-profile Nov 6
-            Pushed 7 commits to fab9/fab9.github.io Nov 6
-            Pushed 38 commits to xdonze/25--Scotts-Tots Nov 3 – Nov 6
-            Pushed 20 commits to asoper29/24--Weekend-Warriors Oct 31 – Nov 2
+      // TODO: Replace a bunch of stuff...
+      var sidebar = jQuery('.sidebar');
 
-            <!-- Pull Requests -->
-            <h3 class="conversation-list-heading">
-              <div class="inner">
-                <span class="octicon octicon-git-pull-request"></span>
-                <span class="text-emphasized">7</span> Pull Requests
-              </div>
-            </h3>
+      sidebar.children('h1')
+        .children('span').text(data.name)
+        .siblings('small').text(data.login)
 
-            <span class="label label-success">Proposed</span>
+      sidebar.children('.bio')
+        .find('li').each(function(){
+          console.log(arguments);
+        });
 
-            #24 Fab9 so more borders 4 days ago
-            asoper29/24--Weekend-Warriors
+      sidebar.children('.stats')
+        .find('big').each(function(){
+          console.log(arguments);
+        });
 
-            <span class="label label-danger">Merged</span>
+    } // END success
+  }); // END jQuery.ajax
 
-            #23 Fab9 so separators 4 days ago
-            asoper29/24--Weekend-Warriors
+  // TODO: Make tabs change when clicked...
+  jQuery('.main').each(function(){
+    var main = jQuery(this),
+        tabs = main.find('.nav.nav-tabs a')
 
-            <span class="label label-danger">Merged</span>
+    tabs.click(function(event){
+        console.log(this, event); // Now what?
 
-            #19 fab9: add image tags (bottles) 5 days ago
-            asoper29/24--Weekend-Warriors
+        // TODO: Add "active" class to parent <li>
+        // TODO: Remove "active" class from other <li>'s
+        // TODO: Reveal corresponding "tab" section
+        // TODO: Hide other "tab" sections
+    }); // END click
+  }); // each(.main)
+})(); // END closure
 
-            <!-- Commits -->
-            <h3 class="conversation-list-heading">
-              <div class="inner">
-                <span class="octicon octicon-git-commit"></span>
-                <span class="text-emphasized">7</span> Issues reported
-              </div>
-            </h3>
-            <ul class="simple-conversation-list">
-              <li>
-                <a href="/fab9/github-profile/commits?author=fab9" class="title">
-                  Pushed 2 commits to fab9/github-profile</a>
-                  Nov 6
-                </li>
-                <li>
-                  <a href="/fab9/fab9.github.io/commits?author=fab9" class="title">
-                    Pushed 7 commits to fab9/fab9.github.io</a>
-                    Nov 6
-                  </li>
-                  <li>
-                    <a href="/xdonze/25--Scotts-Tots/commits?author=fab9" class="title">
-                      Pushed 38 commits to xdonze/25--Scotts-Tots</a>
-                      Nov 3 – Nov 6
-                    </li>
-                    <li>
-                      <a href="/asoper29/24--Weekend-Warriors/commits?author=fab9" class="title">
-                        Pushed 8 commits to asoper29/24--Weekend-Warriors</a>
-                        Nov 1 – Nov 2
-                      </li>
-                    </ul>
-
-                    <span class="label label-danger">Closed</span> #21 SO-image separators 4 days ago
-                    Open #20 PG - Integrating HTML and CSS 5 days ago
-                    Open #11 Shirts Tooltip 6 days ago
-                    <span class="label label-danger">Closed</span> #10 Shirt flip transition 6 days ago
-                    <span class="label label-danger">Closed</span> #9 CSS Hovers 6 days ago
-                    <span class="label label-danger">Closed</span> #8 delete this task dammit 6 days ago
-                  </div> <!-- .col-md-10 -->
-                </div><!-- .row -->
-              </div> <!-- .container -->
-
-              <!-- footer -->
-              <footer class="navbar navbar-default" role="navigation">
-                <div class="container">
-                  <div class="navbar-header">
-                    <a class="header-logo-invertocat navbar-brand" href="https://github.com/">
-                      <span class="mega-octicon octicon-mark-github"></span>
-                    </a>
-                  </div>
-                  <ul class="nav navbar-nav">
-                    <li><a href="#">Explore</a></li>
-                    <li><a href="#">Gist</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Help</a></li>
-                  </ul>
-                  <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Status</a></li>
-                    <li><a href="#">API</a></li>
-                    <li><a href="#">Training</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">About</a></li>
-                  </ul>
-                </div><!-- .container -->
-              </div> <!-- .row -->
-            </footer>
-            © 2014 GitHub, Inc. Terms Privacy Security Contact
-            Status API Training Shop Blog About
-          </div><!-- #user-info-tpl -->
-
-          <script type="text/javascript">
-          $(function(){
-            $.getJSON('https://api.github.com/users/fab9', function(data) {
-              var content = $("#user-info-tpl").html();
-              var newTemplate = Mustache.to_html(content, data);
-              $('#user-info-tpl').html(newTemplate);
-            }); //getJSON
-          }); //function
-          </script>
-
-        </body>
-        </html>
+    </script>
+  </body>
+</html>
