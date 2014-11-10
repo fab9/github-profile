@@ -16,7 +16,8 @@
 </head>
 
 <body>
-  <div id="user-info-tpl">
+  <!-- <div id="repos-tpl"> -->
+  <div id="user-info-tpl" class="wrapper">
     <div class="container beige">
       <!-- nav -->
       <nav class="navbar navbar-default" role="navigation">
@@ -70,9 +71,9 @@
           </ul>
 
           <ul class="list-unstyled">
-            <li><span>{{followers}}</span>Followers</li>
-            <li><span>57</span>Starred</li>
-            <li><span>{{following}}</span>Following</li>
+            <li><span>{{followers}}</span> Followers</li>
+            <li><span>57</span> Starred</li>
+            <li><span>{{following}}</span> Following</li>
           </ul>
 
 
@@ -100,169 +101,199 @@
         <!-- END sidebar -->
 
         <!-- main content -->
-        <div class="col-md-8 col-sm-8">
-          <ul>
-            <li>Contributions</li>
-            <li>Repositories</li>
-            <li>Public activity</li>
-            <li><button type="button" class="btn btn-default btn-sm">
-              <span class="glyphicon glyphicon-pencil"></span>Edit profile</span></li>
-            </ul>
+        <div class="main col-xs-9 col-sm-9 col-md-9">
+          <ul class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#" class="octicon octicon-diff-added">Contributions</a></li>
+            <li><a href="#">Repositories</a></li>
+            <li><a href="#">Public activity</a></li>
+            <li class ="pull-right"><button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span>Edit profile</span></li>
+          </ul><!-- .nav-tabs -->
 
-            <div class="container pink">
-              <div class="col-md-4 col-sm-4">
-                <ul class="list-group">
-                  <li class="list-group-item">Popular Repositories</li>
-                  <li class="list-group-item">devbootcat</li>
-                  <li class="list-group-item">Tumblr clone</li>
-                  <li class="list-group-item">alfred-workflows</li>
-                  <li class="list-group-item">A collection of Alfred 2 workflows that wil...</li>
-                  <li class="list-group-item">dotfiles</li>
-                  <li class="list-group-item">fab9-blog</li>
-                  <li class="list-group-item">fab9.github.io</li>
-                  <li class="list-group-item">Jekyll source for my personal blog.</li>
-                </ul>
-              </div> <!-- .col-md-6 -->
+          <section class="pink clearfix" id="tab-contributions">
+            <div class="panel panel-default col-md-6 col-sm-6 col-xs-6" id="popular-repos">
+              <header class="panel-heading">
+                <h3 class="panel-title">Popular Repositories</h3>
+              </header>
+              <div class="list-group">
+                <a href="#" class="list-group-item">
+                  <span class="badge octicon octicon-star">123</span>
+                  <h4 class="list-group-item-heading octicon octicon-repo">devbootcat</h4>
+                  <p>This is the description of the repository.</p>
+                </a>
+                <a href="#" class="list-group-item">
+                  <span class="badge octicon octicon-star">123</span>
+                  <h4 class="list-group-item-heading octicon octicon-repo">Tumblr clone</h4>
+                  <p>This is the description of the repository.</p>
+                </a>
+                <a href="#" class="list-group-item">
+                  <span class="badge octicon octicon-star">123</span>
+                  <h4 class="list-group-item-heading octicon octicon-repo">alfred-workflows</h4>
+                  <p>This is the description of the repository.</p>
+                </a>
+              </div><!-- .list-group -->
+            </div> <!-- #popular-repos -->
 
-              <div class="col-md-6 col-sm-6">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Repositories contributed to</h3>
-                  </div>
-                  <div class="panel-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas. </p>
-                  </div>
-                </div>
-              </div> <!-- .col-md-6 -->
-            </div><!-- .container -->
+            <div class="panel panel-default col-md-6 col-sm-6 col-xs-6" id="public-contribs">
+              <header class="panel-heading">
+                <h3 class="panel-title">Repositories contributed to</h3>
+              </header>
+              <div class="list-group">
+                <a href="#" class="list-group-item">
+                  <span class="badge octicon octicon-star">123</span>
+                  <h4 class="list-group-item-heading octicon octicon-repo">devbootcat</h4>
+                  <p>This is the description of the repository.</p>
+                </a>
+                <a href="#" class="list-group-item">
+                  <span class="badge octicon octicon-star">123</span>
+                  <h4 class="list-group-item-heading octicon octicon-repo">Tumblr clone</h4>
+                  <p>This is the description of the repository.</p>
+                </a>
+                <a href="#" class="list-group-item">
+                  <span class="badge octicon octicon-star">123</span>
+                  <h4 class="list-group-item-heading octicon octicon-repo">alfred-workflows</h4>
+                  <p>This is the description of the repository.</p>
+                </a>
+              </div><!-- .list-group -->
+            </div><!-- #public-contribs -->
+          </section><!-- .pink -->
 
 
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title">Contributions</h3>
-              </div>
-              <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas. </p>
-              </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">??Contributions</h3>
             </div>
+            <div class="panel-body">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas. </p>
+            </div>
+          </div>
 
-            <h2 class="pull-left">Contribution activity</h2>
-            <button type="button" class="btn btn-default btn-sm pull-right">Period: 1 week<span class="caret"></button>
+          <h2 class="pull-left">Contribution activity</h2>
+          <button type="button" class="btn btn-default btn-sm pull-right">Period: 1 week<span class="caret"></button>
+        </section> <!-- #tab-contributions -->
 
-            <!-- Commits -->
-            <h3 class="conversation-list-heading">
-              <div class="inner">
-                <span class="octicon octicon-git-commit"></span>
-                <span class="text-emphasized">67</span> commits
-              </div>
-            </h3>
+        <!-- Commits -->
+        <h3 class="conversation-list-heading">
+          <div class="inner">
+            <span class="octicon octicon-git-commit"></span>
+            <span class="text-emphasized">67</span> commits
+          </div>
+        </h3>
 
-            Pushed 2 commits to fab9/github-profile Nov 6
-            Pushed 7 commits to fab9/fab9.github.io Nov 6
-            Pushed 38 commits to xdonze/25--Scotts-Tots Nov 3 – Nov 6
-            Pushed 20 commits to asoper29/24--Weekend-Warriors Oct 31 – Nov 2
+        Pushed 2 commits to fab9/github-profile Nov 6
+        Pushed 7 commits to fab9/fab9.github.io Nov 6
+        Pushed 38 commits to xdonze/25--Scotts-Tots Nov 3 – Nov 6
+        Pushed 20 commits to asoper29/24--Weekend-Warriors Oct 31 – Nov 2
 
-            <!-- Pull Requests -->
-            <h3 class="conversation-list-heading">
-              <div class="inner">
-                <span class="octicon octicon-git-pull-request"></span>
-                <span class="text-emphasized">7</span> Pull Requests
-              </div>
-            </h3>
+        <!-- Pull Requests -->
+        <h3 class="conversation-list-heading">
+          <div class="inner">
+            <span class="octicon octicon-git-pull-request"></span>
+            <span class="text-emphasized">7</span> Pull Requests
+          </div>
+        </h3>
 
-            <span class="label label-success">Proposed</span>
+        <span class="label label-success">Proposed</span>
 
-            #24 Fab9 so more borders 4 days ago
-            asoper29/24--Weekend-Warriors
+        #24 Fab9 so more borders 4 days ago
+        asoper29/24--Weekend-Warriors
 
-            <span class="label label-danger">Merged</span>
+        <span class="label label-danger">Merged</span>
 
-            #23 Fab9 so separators 4 days ago
-            asoper29/24--Weekend-Warriors
+        #23 Fab9 so separators 4 days ago
+        asoper29/24--Weekend-Warriors
 
-            <span class="label label-danger">Merged</span>
+        <span class="label label-danger">Merged</span>
 
-            #19 fab9: add image tags (bottles) 5 days ago
-            asoper29/24--Weekend-Warriors
+        #19 fab9: add image tags (bottles) 5 days ago
+        asoper29/24--Weekend-Warriors
 
-            <!-- Commits -->
-            <h3 class="conversation-list-heading">
-              <div class="inner">
-                <span class="octicon octicon-git-commit"></span>
-                <span class="text-emphasized">7</span> Issues reported
-              </div>
-            </h3>
-            <ul class="simple-conversation-list">
+        <!-- Commits -->
+        <h3 class="conversation-list-heading">
+          <div class="inner">
+            <span class="octicon octicon-git-commit"></span>
+            <span class="text-emphasized">7</span> Issues reported
+          </div>
+        </h3>
+        <ul class="simple-conversation-list">
+          <li>
+            <a href="/fab9/github-profile/commits?author=fab9" class="title">
+              Pushed 2 commits to fab9/github-profile</a>
+              Nov 6
+            </li>
+            <li>
+              <a href="/fab9/fab9.github.io/commits?author=fab9" class="title">
+                Pushed 7 commits to fab9/fab9.github.io</a>
+                Nov 6
+              </li>
               <li>
-                <a href="/fab9/github-profile/commits?author=fab9" class="title">
-                  Pushed 2 commits to fab9/github-profile</a>
-                  Nov 6
+                <a href="/xdonze/25--Scotts-Tots/commits?author=fab9" class="title">
+                  Pushed 38 commits to xdonze/25--Scotts-Tots</a>
+                  Nov 3 – Nov 6
                 </li>
                 <li>
-                  <a href="/fab9/fab9.github.io/commits?author=fab9" class="title">
-                    Pushed 7 commits to fab9/fab9.github.io</a>
-                    Nov 6
+                  <a href="/asoper29/24--Weekend-Warriors/commits?author=fab9" class="title">
+                    Pushed 8 commits to asoper29/24--Weekend-Warriors</a>
+                    Nov 1 – Nov 2
                   </li>
-                  <li>
-                    <a href="/xdonze/25--Scotts-Tots/commits?author=fab9" class="title">
-                      Pushed 38 commits to xdonze/25--Scotts-Tots</a>
-                      Nov 3 – Nov 6
-                    </li>
-                    <li>
-                      <a href="/asoper29/24--Weekend-Warriors/commits?author=fab9" class="title">
-                        Pushed 8 commits to asoper29/24--Weekend-Warriors</a>
-                        Nov 1 – Nov 2
-                      </li>
-                    </ul>
+                </ul>
 
-                    <span class="label label-danger">Closed</span> #21 SO-image separators 4 days ago
-                    Open #20 PG - Integrating HTML and CSS 5 days ago
-                    Open #11 Shirts Tooltip 6 days ago
-                    <span class="label label-danger">Closed</span> #10 Shirt flip transition 6 days ago
-                    <span class="label label-danger">Closed</span> #9 CSS Hovers 6 days ago
-                    <span class="label label-danger">Closed</span> #8 delete this task dammit 6 days ago
-                  </div> <!-- .col-md-10 -->
-                </div><!-- .row -->
-              </div> <!-- .container -->
+                <span class="label label-danger">Closed</span> #21 SO-image separators 4 days ago
+                Open #20 PG - Integrating HTML and CSS 5 days ago
+                Open #11 Shirts Tooltip 6 days ago
+                <span class="label label-danger">Closed</span> #10 Shirt flip transition 6 days ago
+                <span class="label label-danger">Closed</span> #9 CSS Hovers 6 days ago
+                <span class="label label-danger">Closed</span> #8 delete this task dammit 6 days ago
+              </div> <!-- .col-md-10 -->
+            </div><!-- .row -->
+          </div> <!-- .container -->
 
-              <!-- footer -->
-              <footer class="navbar navbar-default" role="navigation">
-                <div class="container">
-                  <div class="navbar-header">
-                    <a class="header-logo-invertocat navbar-brand" href="https://github.com/">
-                      <span class="mega-octicon octicon-mark-github"></span>
-                    </a>
-                  </div>
-                  <ul class="nav navbar-nav">
-                    <li><a href="#">Explore</a></li>
-                    <li><a href="#">Gist</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Help</a></li>
-                  </ul>
-                  <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Status</a></li>
-                    <li><a href="#">API</a></li>
-                    <li><a href="#">Training</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">About</a></li>
-                  </ul>
-                </div><!-- .container -->
-              </div> <!-- .row -->
-            </footer>
-            © 2014 GitHub, Inc. Terms Privacy Security Contact
-            Status API Training Shop Blog About
-          </div><!-- #user-info-tpl -->
+          <!-- footer -->
+          <footer class="navbar navbar-default" role="navigation">
+            <div class="container">
+              <div class="navbar-header">
+                <a class="header-logo-invertocat navbar-brand" href="https://github.com/">
+                  <span class="mega-octicon octicon-mark-github"></span>
+                </a>
+              </div>
+              <ul class="nav navbar-nav">
+                <li><a href="#">Explore</a></li>
+                <li><a href="#">Gist</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Help</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Status</a></li>
+                <li><a href="#">API</a></li>
+                <li><a href="#">Training</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">About</a></li>
+              </ul>
+            </div><!-- .container -->
+          </div> <!-- .row -->
+        </footer>
+        © 2014 GitHub, Inc. Terms Privacy Security Contact
+        Status API Training Shop Blog About
+      </div> --><!-- #user-info-tpl -->
 
-          <script type="text/javascript">
-          $(function(){
-            $.getJSON('https://api.github.com/users/fab9', function(data) {
-              var content = $("#user-info-tpl").html();
-              var newTemplate = Mustache.to_html(content, data);
-              $('#user-info-tpl').html(newTemplate);
+      <script type="text/javascript">
+      $(function(){
+        $.getJSON('https://api.github.com/users/fab9', function(data) {
+          var content = $("#user-info-tpl").html();
+          var newTemplate = Mustache.to_html(content, data);
+          $('#user-info-tpl').html(newTemplate);
             }); //getJSON
           }); //function
-          </script>
+      </script>
 
-        </body>
-        </html>
+      <script type="text/javascript">
+      $(function(){
+        $.getJSON('https://api.github.com/users/fab9/repos', function(rdata) {
+          var rcontent = $("#repos-tpl").html();
+          var rnewTemplate = Mustache.to_html(rcontent, rdata);
+          $('#repos-tpl').html(rnewTemplate);
+            }); //getJSON
+          }); //function
+      </script>
+    </body>
+    </html>
