@@ -13,10 +13,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
   <script src="scripts.js"></script>
+  <!-- local temp -->
+
 </head>
 
 <body>
-  <div id="user-info-tpl" class="wrapper">
+  <div id="xxxxuser-info-tpl">
     <div class="container beige">
       <nav class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
@@ -86,18 +88,19 @@
         <!-- Main Content -->
         <div class="main col-xs-9 col-sm-9 col-md-9">
           <ul class="nav nav-tabs" role="tablist">
-            <li class="active"><a href="#" class="octicon octicon-diff-added">Contributions</a></li>
+            <li class="active"><a href="#"><span class="octicon octicon-diff-added">Contributions</span></a></li>
             <li><a href="#">Repositories</a></li>
             <li><a href="#">Public activity</a></li>
             <li class ="pull-right"><button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span>Edit profile</span></li>
           </ul><!-- .nav-tabs -->
 
-          <section class="pink clearfix" id="tab-contributions">
+          <section class="pink contributions-tab">
+            <div class=" clearfix">
             <div class="panel panel-default col-md-6 col-sm-6 col-xs-6" id="popular-repos">
               <header class="panel-heading">
                 <h3 class="panel-title">Popular Repositories</h3>
               </header>
-              <div class="list-group">
+              <ul class="list-group">
                 <a href="#" class="list-group-item">
                   <span class="badge octicon octicon-star">123</span>
                   <h4 class="list-group-item-heading octicon octicon-repo">devbootcat</h4>
@@ -113,7 +116,7 @@
                   <h4 class="list-group-item-heading octicon octicon-repo">alfred-workflows</h4>
                   <p>This is the description of the repository.</p>
                 </a>
-              </div><!-- .list-group -->
+              </ul><!-- .list-group -->
             </div> <!-- #popular-repos -->
 
             <div class="panel panel-default col-md-6 col-sm-6 col-xs-6" id="public-contribs">
@@ -138,7 +141,7 @@
                 </a>
               </div><!-- .list-group -->
             </div><!-- #public-contribs -->
-
+            </div><!-- row -->
             <div class="panel panel-default">
               <div class="panel-heading">
                 <h3 class="panel-title">Contributions<span class="octicon octicon-lock pull-right"></span></h3>
@@ -195,28 +198,17 @@
         </ul>
       </div><!-- .container -->
     </footer>
+  </div><!-- .wrapper #user-info-tpl -->
 
-    © 2014 GitHub, Inc. Terms Privacy Security Contact
-    Status API Training Shop Blog About
-  </div> --><!-- .wrapper #user-info-tpl -->
+  <!-- js -->
   <script type="text/javascript">
   $(function(){
     $.getJSON('https://api.github.com/users/fab9', function(data) {
       var content = $("#user-info-tpl").html();
       var newTemplate = Mustache.to_html(content, data);
       $('#user-info-tpl').html(newTemplate);
-        }); //getJSON
-      }); //function
-  </script>
-
-  <script type="text/javascript">
-  $(function(){
-    $.getJSON('https://api.github.com/users/fab9/repos', function(rdata) {
-      var rcontent = $("#repos-tpl").html();
-      var rnewTemplate = Mustache.to_html(rcontent, rdata);
-      $('#repos-tpl').html(rnewTemplate);
-        }); //getJSON
-      }); //function
+    }); //getJSON
+  }); //function
   </script>
 </body>
 </html>
