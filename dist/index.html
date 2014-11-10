@@ -180,6 +180,7 @@
     } // END success
   }); // END jQuery.ajax
 
+
   // TODO: Make tabs change when clicked...
   jQuery('.main').each(function(){
     var main = jQuery(this),
@@ -194,6 +195,86 @@
         // TODO: Hide other "tab" sections
     }); // END click
   }); // each(.main)
+
+
+    // ----------------
+  // There's a shortcut for getting something and ajaxing and doing
+  // something on success
+  //
+  //in console :
+  //$.get('octocat.json', fundtion(data){});
+  //
+  //what is the diff bw ^^ and $.ajax('octocat.json')
+  //
+  //when i call an ajaxy method such as: $.get/ajax/etc(), it returns
+  //a Promise object.
+  // if everything goes well (the request goes through), the .done(callback) fires. So, on success, .done fires. On error, .error fires.
+  // There's also a .finally and .always that can be fired...
+  // when would I use those?
+  // ---
+  // We can setup a robot to make get requests:
+  //
+  // function getData() {
+  //  return $.get(url)
+  //    .error (function () {
+  //      console.log('OMG!');
+  //    });
+  // }
+  //
+  // function getUser() {         // 1
+  //  return getData('octocat.json');
+  // }
+  //
+  // function getRepos() {          // 2
+  //  return getData('octocat-repos.json');
+  // }
+  //
+  // **** the result of getRepos ^^ is that promise, everytime
+  // I call getRepos, I'll get another promise.****
+  //
+  // function getStarred() {
+  //  return getData('octocat-starred.json');
+  // }
+  //
+  // ===== $.when ===== below uses it to stick 2 promises together
+  // var allData = $.when(
+    // getUser(), getRepos()
+    // );
+  //
+  //  allData.done(function(user,repos) {
+    //  var data = {
+    //    user: user[0],
+    //    repos: repos[0]
+    //    }
+  //    console.info(data);
+  //
+  //    pull out and do text replacements
+  //    for each element here... something like this...
+  //
+  //     jQuery('#avatar')
+     //   .attr('href', data.avatar_url)
+     //   .children('img')
+     //     .attr('src', data.avatar_url)
+     // ;
+     //
+     //
+  //  }); // TODO: check this syntax
+  //
+  //
+  //---
+  //  promise is not built into js.
+  //  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+  //
+  //
+
+// ---
+// in console:
+// $.get('https://api.github.com/users/al-the-x', function(data) {
+//    console.log(data);
+// });
+
+
+  // ----------------
 })(); // END closure
 
     </script>

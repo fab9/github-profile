@@ -221,11 +221,11 @@
   //    });
   // }
   //
-  // function getUser() {
+  // function getUser() {         // 1
   //  return getData('octocat.json');
   // }
   //
-  // function getRepos() {
+  // function getRepos() {          // 2
   //  return getData('octocat-repos.json');
   // }
   //
@@ -236,12 +236,42 @@
   //  return getData('octocat-starred.json');
   // }
   //
+  // ===== $.when ===== below uses it to stick 2 promises together
+  // var allData = $.when(
+    // getUser(), getRepos()
+    // );
+  //
+  //  allData.done(function(user,repos) {
+    //  var data = {
+    //    user: user[0],
+    //    repos: repos[0]
+    //    }
+  //    console.info(data);
+  //
+  //    pull out and do text replacements
+  //    for each element here... something like this...
+  //
+  //     jQuery('#avatar')
+     //   .attr('href', data.avatar_url)
+     //   .children('img')
+     //     .attr('src', data.avatar_url)
+     // ;
+     //
+     //
+  //  }); // TODO: check this syntax
   //
   //
+  //---
+  //  promise is not built into js.
+  //  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
   //
-  // }
+  //
 
-
+// ---
+// in console:
+// $.get('https://api.github.com/users/al-the-x', function(data) {
+//    console.log(data);
+// });
 
 
   // ----------------
