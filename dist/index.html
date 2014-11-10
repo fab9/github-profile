@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/octicons/2.1.2/octicons.min.css">
     <style>
+      body {
+        font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+        color: #333;
+      }
       body > .container {
         min-width: 1020px;
       }
@@ -34,6 +38,51 @@
         padding-right: 0;
         padding-left: 0;
       }
+      .thumbnail { /* bootstrap override */
+        border: none;
+      }
+      .thumbnail>img { /* bootstrap override */
+        border-radius: 4px;
+      }
+      .badge {
+        color: inherit;
+        vertical-align: baseline;
+        background-color: inherit;
+        border-radius: none;
+        font-size: 12px;
+        color: #888;
+      }
+      .list-group-item-heading {
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .repo-description {
+display: block;
+max-width: 230px;
+font-size: 12px;
+color: #777;
+}
+
+.css-truncate .css-truncate-target {
+display: inline-block;
+max-width: 125px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+vertical-align: top;
+}
+
+.avatar {
+display: inline-block;
+overflow: hidden;
+line-height: 1;
+vertical-align: middle;
+border-radius: 3px;
+
+display: inline-block;
+margin-bottom: 3px;
+}
       .pink {
         background-color: pink;
       }
@@ -75,6 +124,19 @@
             <a href="#" class="col-xs-4"><big>{{starred.length???}}</big> Starred</a>
             <a href="#" class="col-xs-4"><big>{{following}}</big> Following</a>
           </ul>
+          <div class="orgs">
+            <h3>Organizations</h3>
+            <img class="avatar" src="https://avatars3.githubusercontent.com/u/6183?v=2&s=84" height="42" width="42">
+            <img class="avatar" src="https://avatars3.githubusercontent.com/u/1266578?v=2&s=84" height="42" width="42">
+            <img class="avatar" src="https://avatars1.githubusercontent.com/u/3080009?v=2&s=84" height="42" width="42">
+            <img class="avatar" src="https://avatars1.githubusercontent.com/u/3080402?v=2&s=84" height="42" width="42">
+            <img class="avatar" src="https://avatars0.githubusercontent.com/u/3086128?v=2&s=84" height="42" width="42">
+            <img class="avatar" src="https://avatars3.githubusercontent.com/u/3086150?v=2&s=84" height="42" width="42">
+            <img class="avatar" src="https://avatars3.githubusercontent.com/u/3086272?v=2&s=84" height="42" width="42">
+            <img class="avatar" src="https://avatars3.githubusercontent.com/u/6732188?v=2&s=84" height="42" width="42">
+            <img class="avatar" src="https://avatars0.githubusercontent.com/u/6732193?v=2&s=84" height="42" width="42">
+            <img class="avatar" src="https://avatars3.githubusercontent.com/u/8798300?v=2&s=84" height="42" width="42">
+          </div><!-- .orgs -->
         </aside><!-- .sidebar -->
         <!-- Begin main -->
         <section class="blue main col-xs-9 col-sm-9 col-md-9">
@@ -95,19 +157,19 @@
                               <span class="badge octicon octicon-star">123</span>
                               <h4 class="list-group-item-heading octicon octicon-repo">
                                 Repository Name</h4>
-                              <p>This is the description of the repository.</p>
+                              <span class="repo-description css-truncate-target">This is the description of the repository.</span>
                             </a>
                             <a href="#" class="list-group-item">
                               <span class="badge octicon octicon-star">123</span>
                               <h4 class="list-group-item-heading octicon octicon-repo">
                                 Repository Name</h4>
-                              <p>This is the description of the repository.</p>
+                              <span class="repo-description css-truncate-target">This is the description of the repository.</span>
                             </a>
                             <a href="#" class="list-group-item">
                               <span class="badge octicon octicon-star">123</span>
                               <h4 class="list-group-item-heading octicon octicon-repo">
                                 Repository Name</h4>
-                              <p>This is the description of the repository.</p>
+                              <span class="repo-description css-truncate-target">This is the description of the repository.</span>
                             </a>
                           </nav>
                         </div> <!-- #popular-repos -->
@@ -120,19 +182,19 @@
                               <span class="badge octicon octicon-star">123</span>
                               <h4 class="list-group-item-heading octicon octicon-repo">
                                 Repository Name</h4>
-                              <p>This is the description of the repository.</p>
+                              <span class="repo-description css-truncate-target">This is the description of the repository.</span>
                             </a>
                             <a href="#" class="list-group-item">
                               <span class="badge octicon octicon-star">123</span>
                               <h4 class="list-group-item-heading octicon octicon-repo">
                                 Repository Name</h4>
-                              <p>This is the description of the repository.</p>
+                              <span class="repo-description css-truncate-target">This is the description of the repository.</span>
                             </a>
                             <a href="#" class="list-group-item">
                               <span class="badge octicon octicon-star">123</span>
                               <h4 class="list-group-item-heading octicon octicon-repo">
                                 Repository Name</h4>
-                              <p>This is the description of the repository.</p>
+                              <span class="repo-description css-truncate-target">This is the description of the repository.</span>
                             </a>
                           </nav>
                         </div> <!-- #repo-contribs -->
@@ -143,7 +205,7 @@
 
             <div class="panel panel-default clearfix" id="public-contribs">
               <header class="panel-heading">
-                <h4 class="panel-title"> Public contributions </h4>
+                <h3 class="panel-title"> Public contributions </h3>
               </header>
               <ul class="list-group">
                 <li class="list-group-item">
