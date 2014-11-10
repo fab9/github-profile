@@ -5,28 +5,27 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/octicons/2.1.2/octicons.min.css">
     <style>
-body > .container {
-  min-width: 1020px;
-}
+      body > .container {
+        min-width: 1020px;
+      }
 
-.navbar-brand {
-  font-size: 4ex;
-}
+      .navbar-brand {
+        font-size: 4ex;
+      }
 
-.stats big {
-  font-size: 200%;
-}
+      .stats big {
+        font-size: 200%;
+      }
 
-.bio li {
-  line-height: 2;
-}
-.bio .octicon:before {
-  display: inline-block;
-  color: gray;
-  width: 2em;
-  text-align: center;
-}
-
+      .bio li {
+        line-height: 2;
+      }
+      .bio .octicon:before {
+        display: inline-block;
+        color: gray;
+        width: 2em;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -181,6 +180,7 @@ body > .container {
     } // END success
   }); // END jQuery.ajax
 
+
   // TODO: Make tabs change when clicked...
   jQuery('.main').each(function(){
     var main = jQuery(this),
@@ -195,6 +195,56 @@ body > .container {
         // TODO: Hide other "tab" sections
     }); // END click
   }); // each(.main)
+
+
+    // ----------------
+  // There's a shortcut for getting something and ajaxing and doing
+  // something on success
+  //
+  //in console :
+  //$.get('octocat.json', fundtion(data){});
+  //
+  //what is the diff bw ^^ and $.ajax('octocat.json')
+  //
+  //when i call an ajaxy method such as: $.get/ajax/etc(), it returns
+  //a Promise object.
+  // if everything goes well (the request goes through), the .done(callback) fires. So, on success, .done fires. On error, .error fires.
+  // There's also a .finally and .always that can be fired...
+  // when would I use those?
+  // ---
+  // We can setup a robot to make get requests:
+  //
+  // function getData() {
+  //  return $.get(url)
+  //    .error (function () {
+  //      console.log('OMG!');
+  //    });
+  // }
+  //
+  // function getUser() {
+  //  return getData('octocat.json');
+  // }
+  //
+  // function getRepos() {
+  //  return getData('octocat-repos.json');
+  // }
+  //
+  // **** the result of getRepos ^^ is that promise, everytime
+  // I call getRepos, I'll get another promise.****
+  //
+  // function getStarred() {
+  //  return getData('octocat-starred.json');
+  // }
+  //
+  //
+  //
+  //
+  // }
+
+
+
+
+  // ----------------
 })(); // END closure
 
     </script>
