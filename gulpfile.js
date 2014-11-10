@@ -22,7 +22,7 @@ gulp.task('js', function() {
 });
 
 gulp.task('json', function() {
-  return gulp.src('data.json')
+  return gulp.src('*.json')
     .pipe(gulp.dest('dist'))
     .pipe(reload());
 });
@@ -36,7 +36,7 @@ gulp.task('watch', function() {
   gulp.watch('*.html', ['html']);
   gulp.watch('*.css', ['css']);
   gulp.watch('scripts.js', ['js']);
-  gulp.watch('data.json', ['json']);
+  gulp.watch('*.json', ['json']);
 });
 
 // helper function called “reload” that will either return a stream to trigger LiveReload (if LiveReload is available) or simply return a noop stream
