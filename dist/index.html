@@ -26,6 +26,25 @@
         width: 2em;
         text-align: center;
       }
+      .main .panel { /* bootstrap override */
+        padding-right: 0;
+        padding-left: 0;
+      }
+      .main > section { /* bootstrap override */
+        padding-right: 0;
+        padding-left: 0;
+      }
+      .pink {
+        background-color: pink;
+      }
+
+      .purple {
+        background-color: thistle;
+      }
+
+      .blue {
+        background-color: lightblue;
+      }
     </style>
   </head>
   <body>
@@ -37,13 +56,12 @@
         </div>
       </nav>
       <div class="row">
-        <aside class="sidebar col-xs-4 col-sm-4 col-md-4">
+        <!-- Begin sidebar -->
+        <aside class="sidebar col-xs-3 col-sm-3 col-md-3">
           <a href="#" class="thumbnail" id="avatar"><img></a>
           <h1> <span>{{name}}</span> <br>
             <small>{{login}}</small></h1>
-
           <hr>
-
           <ul class="bio list-unstyled">
             <li> <i class="octicon octicon-organization"></i> {{company}}
             <li> <i class="octicon octicon-location"></i> {{location}}
@@ -51,59 +69,87 @@
             <li> <i class="octicon octicon-link"></i> {{blog}}
             <li> <i class="octicon octicon-clock"></i> {{created_at}}... kinda
           </ul>
-
           <hr>
-
           <nav class="stats text-center">
             <a href="#" class="col-xs-4"><big>{{followers}}</big> Followers</a>
             <a href="#" class="col-xs-4"><big>{{starred.length???}}</big> Starred</a>
             <a href="#" class="col-xs-4"><big>{{following}}</big> Following</a>
           </ul>
-        </aside>
-        <section class="main col-xs-8 col-sm-8 col-md-8">
+        </aside><!-- .sidebar -->
+        <!-- Begin main -->
+        <section class="blue main col-xs-9 col-sm-9 col-md-9">
           <ul class="nav nav-tabs">
             <li class="active"> <a href="#" class="octicon octicon-diff-added "> Contributions </a>
             <li> <a href="#"> Repositories </a>
             <li> <a href="#"> Public activity </a>
           </ul>
           <br>
-          <section class="col-xs-12 col-sm-12 col-md-12" id="tab-contributions">
-            <div class="panel panel-default" id="popular-repos">
-              <header class="panel-heading">
-                <h3 class="panel-title"> Popular Repositories </h3>
-              </header>
 
-              <nav class="list-group">
-                <a href="#" class="list-group-item">
-                  <span class="badge octicon octicon-star">123</span>
-                  <h4 class="list-group-item-heading octicon octicon-repo">
-                    Repository Name</h4>
-                  <p>This is the description of the repository.</p>
-                </a>
-                <a href="#" class="list-group-item">
-                  <span class="badge octicon octicon-star">123</span>
-                  <h4 class="list-group-item-heading octicon octicon-repo">
-                    Repository Name</h4>
-                  <p>This is the description of the repository.</p>
-                </a>
-                <a href="#" class="list-group-item">
-                  <span class="badge octicon octicon-star">123</span>
-                  <h4 class="list-group-item-heading octicon octicon-repo">
-                    Repository Name</h4>
-                  <p>This is the description of the repository.</p>
-                </a>
-              </nav>
-            </div> <!-- #popular-repos -->
-            <div class="panel panel-default" id="public-contribs">
+          <section class="pink col-xs-12 col-sm-12 col-md-12" id="tab-contributions">
+            <div class="panel panel-default col-xs-6 col-sm-6 col-md-6" id="popular-repos">
+                          <header class="panel-heading">
+                            <h3 class="panel-title"> Popular Repositories </h3>
+                          </header>
+                          <nav class="list-group">
+                            <a href="#" class="list-group-item">
+                              <span class="badge octicon octicon-star">123</span>
+                              <h4 class="list-group-item-heading octicon octicon-repo">
+                                Repository Name</h4>
+                              <p>This is the description of the repository.</p>
+                            </a>
+                            <a href="#" class="list-group-item">
+                              <span class="badge octicon octicon-star">123</span>
+                              <h4 class="list-group-item-heading octicon octicon-repo">
+                                Repository Name</h4>
+                              <p>This is the description of the repository.</p>
+                            </a>
+                            <a href="#" class="list-group-item">
+                              <span class="badge octicon octicon-star">123</span>
+                              <h4 class="list-group-item-heading octicon octicon-repo">
+                                Repository Name</h4>
+                              <p>This is the description of the repository.</p>
+                            </a>
+                          </nav>
+                        </div> <!-- #popular-repos -->
+                        <div class="panel panel-default col-xs-6 col-sm-6 col-md-6" id="repo-contribs">
+                          <header class="panel-heading">
+                            <h3 class="panel-title"> Repositories contributed to </h3>
+                          </header>
+                          <nav class="list-group">
+                            <a href="#" class="list-group-item">
+                              <span class="badge octicon octicon-star">123</span>
+                              <h4 class="list-group-item-heading octicon octicon-repo">
+                                Repository Name</h4>
+                              <p>This is the description of the repository.</p>
+                            </a>
+                            <a href="#" class="list-group-item">
+                              <span class="badge octicon octicon-star">123</span>
+                              <h4 class="list-group-item-heading octicon octicon-repo">
+                                Repository Name</h4>
+                              <p>This is the description of the repository.</p>
+                            </a>
+                            <a href="#" class="list-group-item">
+                              <span class="badge octicon octicon-star">123</span>
+                              <h4 class="list-group-item-heading octicon octicon-repo">
+                                Repository Name</h4>
+                              <p>This is the description of the repository.</p>
+                            </a>
+                          </nav>
+                        </div> <!-- #repo-contribs -->
+
+
+
+
+
+            <div class="panel panel-default clearfix" id="public-contribs">
               <header class="panel-heading">
                 <h4 class="panel-title"> Public contributions </h4>
               </header>
-
               <ul class="list-group">
                 <li class="list-group-item">
                   <p> Contribution Graph ZOMG! </p>
+                  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec cursus diam quis leo placerat dictum. Fusce turpis quam, ultrices ut porta sed, aliquam at elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla risus nunc, molestie at congue sit amet, congue a sem. Maecenas ut ipsum vel arcu cursus cursus. Mauris a pulvinar ligula. Fusce tincidunt tempus turpis non vestibulum. Vestibulum sed enim velit, non molestie enim. Pellentesque at mi ipsum, vitae pulvinar dolor. Nam tempus dictum iaculis. Vivamus eget eros id diam iaculis sollicitudin. </p>
                 </li>
-
                 <li class="list-group-item col-xs-4">
                   <h6 class="list-group-item-heading"> Year of Contributions </h6>
                 </li>
@@ -124,7 +170,8 @@
               </div>
             </div>
           </section> <!-- #tab-contributions -->
-          <section hidden class="col-xs-12 col-sm-12 col-md-12" id="tab-repositories">
+
+          <section hidden class="purple col-xs-6 col-sm-6 col-md-6" id="tab-repositories">
             <ul class="list-group" id="repo-list">
               <li class="list-group-item">
                 <h3 class="list-group-item-heading">Repository Name</h3>
